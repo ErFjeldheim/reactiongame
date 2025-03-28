@@ -1,23 +1,26 @@
-package reactiongame;
+package reactiongame.model;
 
 import java.time.Instant;
-import reactiongame.ReactionTest.TestStatus;
 import java.time.Duration;
 
 
 public class ReactionTest {
 
     public enum TestStatus { 
-        WAITING,
-        SHOWING_STIMULUS,
-        COMPLETED,
-        EARLY_CLICK
+        WAITING,            //Venter på at knapp skal vises
+        SHOWING_STIMULUS,   //Knapp vises, bruker kan registrere trykk
+        COMPLETED,          //Bruker trykker mellomrom
+        EARLY_CLICK         //Bruker trykker for tidlig
     }
 
     private Instant stimulusTime;
     private Instant userReactionTime;
     private long reactionTime;
-    private TestStatus status = TestStatus.WAITING;
+    private TestStatus status;
+
+    public ReactionTest(){ //Initialiserer statusobjekt
+        this.status = TestStatus.WAITING;
+    }
     
     public void showStimulus() {
         if (this.status != TestStatus.WAITING) {
@@ -25,7 +28,6 @@ public class ReactionTest {
         }
         this.stimulusTime = Instant.now();
         this.status = TestStatus.SHOWING_STIMULUS;
-
     }
 
     public void recordReaction() {
@@ -47,6 +49,10 @@ public class ReactionTest {
 
     public boolean isValidReaction() {
         //Sjekker at brukeren trykker etter rød knapp vises
-        return this.status != TestStatus.EARLY_CLICK;
+        return this.status == TestStatus.COMPLETED;
+    }
+
+    public TestStatus getStatus(){
+        return this.status;
     }
 }
