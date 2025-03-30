@@ -13,7 +13,7 @@ public class ReactionController{
     @FXML private Button startButton;
     @FXML private Button reactionButton;
 
-    private reactiongame.ReactionTest reactionTest;
+    private ReactionTest reactionTest;
     private Timer timer;
     private Random random;
 
@@ -32,7 +32,7 @@ public class ReactionController{
         int delay = 1000 + random.nextInt(4000); //1-5 sekunder tilfeldig forsinkelse
 
         timer = new Timer();
-        timer.schedule(new TimerTask());{
+        timer.schedule(new TimerTask()){
             @Override
             public void run(){
                 reactionTest.showStimulus();
@@ -48,7 +48,7 @@ public class ReactionController{
             reactionTest.recordReaction();
             statusLabel.setText("Din reaksjonstid: " + reactionTest.getReactionTime() + "ms");
         } catch{
-            status.Label.setText("Teiting! Du trykket for tidlig!");
+            statusLabel.setText("Teiting! Du trykket for tidlig!");
         }
         startButton.setDisable(false);
         reactionButton.setDisable(true);

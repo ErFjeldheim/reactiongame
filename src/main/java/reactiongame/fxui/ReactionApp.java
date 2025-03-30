@@ -11,7 +11,7 @@ public class ReactionApp extends Application{
     public void start(Stage primaryStage){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/reactiongame/fxui/Reaction.fxml"));
-            Scene scene = new Scene(fxmlLoader.load())
+            Scene scene = new Scene(fxmlLoader.load());
 
             primaryStage.setTitle("Reaction Game");
             primaryStage.setScene(scene);

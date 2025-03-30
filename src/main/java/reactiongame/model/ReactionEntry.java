@@ -1,7 +1,7 @@
-package main.java.reactiongame.model;
+package reactiongame.model;
 
 public class ReactionEntry {
     public static void main(String[] args) {
-        ReactionGameApp.main(args);
+        //Kode kommer
     }
 }
