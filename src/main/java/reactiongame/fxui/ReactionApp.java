@@ -16,7 +16,7 @@ public class ReactionApp extends Application{
             primaryStage.setTitle("Reaction Game");
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -24,11 +24,4 @@ public class ReactionApp extends Application{
 
 public static void main(String[] args){
     launch(args);
-}
-
-
-public class ReactionApp {
-    public static void main(String[] args) {
-        ReactionGameApp.main(args);
-    }
 }
