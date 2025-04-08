@@ -15,7 +15,7 @@ public class TestResult {
         return reactionTime;
     }
 
-    public LocalDateTime getTimestamp{
+    public LocalDateTime getTimestamp(){
         return timestamp;
     }
 }

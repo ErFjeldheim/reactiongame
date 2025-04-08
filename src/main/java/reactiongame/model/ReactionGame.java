@@ -1,8 +1,7 @@
 package reactiongame.model;
 
+import java.time.Duration;
 import java.time.Instant;
-import java.time.Duration;
-import java.time.Duration;
 
 public class ReactionGame {
     private Instant startTime;
@@ -26,7 +25,7 @@ public class ReactionGame {
 
     public long getResponseTime(){
         if (reactionTime == null){
-            throw new IllegalStateException("Reaksjonstid er ikke registrert ennå!")
+            throw new IllegalStateException("Reaksjonstid er ikke registrert ennå!");
         }
         return responseTime;
     }

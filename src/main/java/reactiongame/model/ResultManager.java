@@ -5,13 +5,11 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.OptionalLong;
 
-import reactiongame.model.TestResult;
-
 public class ResultManager {
     private List<TestResult> results = new ArrayList<>();
 
     public void addResult(TestResult result){
-        return new ArrayList<>(results);
+        results.add(result);
     }
 
     public List<TestResult> getAllResults(){
@@ -27,7 +25,7 @@ public class ResultManager {
     public OptionalDouble getAverageTime(){
         return results.stream()
             .mapToLong(TestResult::getReactionTime)
-            .min();
+            .average();
     }
 
     public List<TestResult> getLatestResults(int count){
