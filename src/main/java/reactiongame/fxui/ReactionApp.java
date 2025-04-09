@@ -1,10 +1,11 @@
 package reactiongame.fxui;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
 
 public class ReactionApp extends Application{
     @Override
@@ -20,8 +21,10 @@ public class ReactionApp extends Application{
             e.printStackTrace();
         }
     }
-}
+
 
 public static void main(String[] args){
     launch(args);
+}
+
 }
