@@ -14,7 +14,7 @@
         <Label text="Reaksjonstest" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
         <Label fx:id="statusLabel" text="Trykk Start for å begynne" />
         <Button fx:id="startButton" onAction="#startGame" text="Start" />
-        <Button fx:id="reactionButton" onAction="#recordReaction" text="Reager!" style="-fx-background-color: red; -fx-text-fill: white;" />
+        <Button fx:id="reactionButton" onAction="#recordReaction" text="Trykk!" style="-fx-background-color: red; -fx-text-fill: white;" />
 
         <VBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-border-color: lightgray; fx-border-radius: 5; fx-padding: 10;">
             <Label text="Statistikk" style="-fx-font-weight: bold;" />
