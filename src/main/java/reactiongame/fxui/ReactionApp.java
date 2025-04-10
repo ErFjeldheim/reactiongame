@@ -20,8 +20,9 @@ public class ReactionApp extends Application{
             e.printStackTrace();
         }
     }
-}
 
-public static void main(String[] args){
-    launch(args);
+
+    public static void main(String[] args){
+        launch(args);
+    }
 }
