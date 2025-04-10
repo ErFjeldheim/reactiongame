@@ -53,4 +53,5 @@ public class ReactionSettingsController {
     private void closeWindow() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
+    }
 }
