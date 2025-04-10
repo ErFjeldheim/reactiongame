@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import reactiongame.model.FileStorage;
@@ -57,11 +58,34 @@ public class ReactionController{
             resultManager.addResult(result);
         }
         
+        // Legger til tastaturlytter når scenen er klar
+        reactionButton.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                initializeKeyHandler();
+            }
+        });
+        
         updateStatistics();
+    }
+
+    private void initializeKeyHandler() {
+        // Legger til tastaturlytter for mellomromstasten
+        reactionButton.getScene().setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.SPACE) {
+                if (!reactionButton.isDisabled()) {
+                    recordReaction();
+                } else if (!startButton.isDisabled()) {
+                    startGame();
+                }
+            }
+        });
     }
 
     @FXML
     private void startGame() {
+        // Oppretter ny ReactionTest ved hver start
+        reactionTest = new ReactionTest();
+        
         statusLabel.setText("Vent på signal...");
         startButton.setDisable(true);
         reactionButton.setDisable(true);
@@ -72,6 +96,11 @@ public class ReactionController{
             delay += random.nextInt(maxDelayOffset);
         }
 
+        // Avbryter eksisterende timer hvis den finnes
+        if (timer != null) {
+            timer.cancel();
+        }
+        
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -80,6 +109,7 @@ public class ReactionController{
                     reactionTest.showStimulus();
                     statusLabel.setText("Trykk nå!");
                     reactionButton.setDisable(false);
+                    reactionButton.requestFocus(); // Sørger for at reactionButton har fokus
                 });
             }
         }, delay);
@@ -121,6 +151,14 @@ public class ReactionController{
             stage.setTitle("Reaksjonstidshistorikk");
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
+            
+            // Legger til tastaturnavigasjon for å lukke vinduet med ESC
+            scene.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ESCAPE) {
+                    stage.close();
+                }
+            });
+            
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -137,9 +175,17 @@ public class ReactionController{
             stage.setTitle("Innstillinger");
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
+            
+            // Legger til tastaturnavigasjon for å lukke vinduet med ESC
+            scene.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ESCAPE) {
+                    stage.close();
+                }
+            });
+            
             stage.showAndWait();
             
-            // Oppdater visningen
+            // Oppdaterer visningen
             updateStatistics();
         } catch (IOException e) {
             e.printStackTrace();

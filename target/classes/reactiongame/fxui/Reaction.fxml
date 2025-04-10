@@ -16,7 +16,7 @@
         <Button fx:id="startButton" onAction="#startGame" text="Start" />
         <Button fx:id="reactionButton" onAction="#recordReaction" text="Trykk!" style="-fx-background-color: red; -fx-text-fill: white;" />
 
-        <VBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-border-color: lightgray; fx-border-radius: 5; fx-padding: 10;">
+        <VBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-padding: 10;">
             <Label text="Statistikk" style="-fx-font-weight: bold;" />
             <Label fx:id="bestTimeLabel" text="Beste tid: -" />
             <Label fx:id="averageLabel" text="Gjennomsnitt: -" />
@@ -24,8 +24,8 @@
         </VBox>
 
         <HBox alignment="CENTER" spacing="10.0">
-            <Button text="Vis historikk" />
-            <Button text="Lagre resultater" />
+            <Button text="Vis historikk" onAction="#showHistory" />
+            <Button text="Innstillinger" onAction="#showSettings" />
         </HBox>
     </children>
 </VBox>
