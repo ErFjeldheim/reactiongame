@@ -1,10 +1,13 @@
 package reactiongame.model;
 
-import java.time.Instant;
 import java.time.Duration;
-
+import java.time.Instant;
+import java.util.Random;
 
 public class ReactionTest {
+    private static final int MIN_DELAY = 1000;  // 1 sekund
+    private static final int MAX_DELAY = 5000;  // 5 sekunder
+    private static final Random random = new Random();
 
     public enum TestStatus { 
         WAITING,            //Venter på at knapp skal vises
@@ -54,5 +57,9 @@ public class ReactionTest {
 
     public TestStatus getStatus(){
         return this.status;
+    }
+
+    public int getRandomDelay() {
+        return MIN_DELAY + random.nextInt(MAX_DELAY - MIN_DELAY + 1);
     }
 }
