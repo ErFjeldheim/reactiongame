@@ -27,5 +27,3 @@ public class ReactionApp extends Application{
         launch(args);
     }
 }
-
-}
