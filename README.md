@@ -33,13 +33,7 @@ mvn clean install
 Launch the application with:
 
 ```
-mvn javafx:run
-```
-
-Or run the compiled JAR file:
-
-```
-java -jar target/reactiongame-1.0-SNAPSHOT.jar
+mvn clean javafx:run
 ```
 
 ## How to Use
