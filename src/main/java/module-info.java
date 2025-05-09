@@ -1,4 +1,5 @@
 module reactiongame {
+    requires transitive javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
     requires java.prefs;
